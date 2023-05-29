@@ -205,10 +205,15 @@
 <!-- end footer -->
 
 <!-- JS -->
-<script src="//code.jquery.com/jquery-3.2.1.slim.min.js" type="text/javascript"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" type="text/javascript"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="<c:url value="/store/js/jquery-3_2_1-slim-min.js"/>"
+        type="text/javascript"></script>
+<script
+        src="<c:url value="/store/js/popper-1_12_9-min.js"/>"
+        type="text/javascript"></script>
+<script
+        src="<c:url value="/store/js/bootstrap-4_0_0-min.js"/>"
+        type="text/javascript"></script>
+<script src="<c:url value="/store/js/jquery-3_5_1-min.js"/>"></script>
 
 
 <script type="text/javascript">

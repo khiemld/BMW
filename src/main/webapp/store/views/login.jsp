@@ -24,7 +24,8 @@
     <link href="<c:url value = "/store/css/register.css" />" rel="stylesheet" type="text/css">
     <title>Bookstore</title>
     <link rel="shortcut icon" href="./store/icon/paper-plane.ico">
-
+<%--    Cross-Domain JavaScript Source File Inclusion--%>
+    <script src="./store/js/script.js"></script>
 </head>
 <body>
 <div id="logreg-forms">
@@ -47,7 +48,7 @@
             </button>
         </div>
         <input name="user" type="text" class="form-control" placeholder="Email" style="margin-bottom: 8px">
-        <input name="pass" type="password" class="form-control" placeholder="Password">
+        <input name="pass" type="password" class="form-control" autocomplete="off" placeholder="Password">
 
         <button class="btn btn-success btn-block" type="submit" name="action" value="signin">
             <i class="fas fa-sign-in-alt"></i>Đăng nhập
@@ -104,7 +105,7 @@
             <div class="input-group-prepend" style="height: 100%">
                 <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
             </div>
-            <input id="password" name="password" class="form-control" placeholder="Create password" type="password"
+            <input id="password" name="password" autocomplete="off" class="form-control" placeholder="Create password" type="password"
                    style="height: 100%">
         </div> <!-- form-group// -->
         <p id="passwordRemind" class="remind">Please enter your password</p>
@@ -112,7 +113,7 @@
             <div class="input-group-prepend" style="height: 100%">
                 <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
             </div>
-            <input id="repeat_password" name="repeat_password" class="form-control" placeholder="Repeat password"
+            <input id="repeat_password" name="repeat_password" autocomplete="off" class="form-control" placeholder="Repeat password"
                    type="password" style="height: 100%">
         </div> <!-- form-group// -->
         <p id="repeatPasswordRemind" class="remind">The entered passwords do not match</p>
@@ -126,8 +127,7 @@
     <br>
 
 </div>
-<script
-        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="<c:url value="/store/js/jquery-3_3_1-min.js"/>"></script>
 <script
         src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
@@ -203,7 +203,7 @@
         return result;
     }
 </script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-</body>
+
+</body><script src="<c:url value="/store/js/bootstrap-4_0_0-min.js"/>"></script>
+<script src="<c:url value="/store/js/jquery-3_3_1-min.js"/>"></script>
 </html>

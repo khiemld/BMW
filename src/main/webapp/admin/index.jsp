@@ -5,6 +5,8 @@
   Time: 6:27 PM
   To change this template use File | Settings | File Templates.
 --%>
+
+<%--Dong 489 index--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -486,47 +488,47 @@
                     </div>
 
                     <%--                    Doanh thu tuần vừa qua --%>
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body"><h5 class="card-title">Doanh thu tuần vừa qua</h5>
-                                <canvas id="lineChart"
-                                        style="max-height: 400px; display: block; box-sizing: border-box; height: 264px; width: 528px;"
-                                        width="660" height="330"></canvas>
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", () => {
-                                        new Chart(document.querySelector('#lineChart'), {
-                                            type: 'line',
-                                            data: {
-                                                labels: [
-                                                    <c:forEach items="${lastWeekFromNow}" var="date">
-                                                    '${date.toLocalDate().getDayOfMonth()}/${date.toLocalDate().getMonthValue()}/${date.toLocalDate().getYear()}',
-                                                    </c:forEach>
-                                                    // 'January', 'February', 'March', 'April', 'May', 'June', 'July'
-                                                ],
-                                                datasets: [{
-                                                    label: 'Doanh thu',
-                                                    data: [
-                                                        <c:forEach items="${incomeLastWeek}" var="icome">
-                                                        ${icome},
-                                                        </c:forEach>
-                                                    ],
-                                                    fill: false,
-                                                    borderColor: 'rgb(75, 192, 192)',
-                                                    tension: 0.1
-                                                }]
-                                            },
-                                            options: {
-                                                scales: {
-                                                    y: {
-                                                        beginAtZero: true
-                                                    }
-                                                }
-                                            }
-                                        });
-                                    });</script>
-                            </div>
-                        </div>
-                    </div>
+<%--                    <div class="col-12">--%>
+<%--                        <div class="card">--%>
+<%--                            <div class="card-body"><h5 class="card-title">Doanh thu tuần vừa qua</h5>--%>
+<%--                                <canvas id="lineChart"--%>
+<%--                                        style="max-height: 400px; display: block; box-sizing: border-box; height: 264px; width: 528px;"--%>
+<%--                                        width="660" height="330"></canvas>--%>
+<%--                                <script>--%>
+<%--                                    document.addEventListener("DOMContentLoaded", () => {--%>
+<%--                                        new Chart(document.querySelector('#lineChart'), {--%>
+<%--                                            type: 'line',--%>
+<%--                                            data: {--%>
+<%--                                                labels: [--%>
+<%--                                                    <c:forEach items="${lastWeekFromNow}" var="date">--%>
+<%--                                                    '${date.toLocalDate().getDayOfMonth()}/${date.toLocalDate().getMonthValue()}/${date.toLocalDate().getYear()}',--%>
+<%--                                                    </c:forEach>--%>
+<%--                                                    // 'January', 'February', 'March', 'April', 'May', 'June', 'July'--%>
+<%--                                                ],--%>
+<%--                                                datasets: [{--%>
+<%--                                                    label: 'Doanh thu',--%>
+<%--                                                    data: [--%>
+<%--                                                        <c:forEach items="${incomeLastWeek}" var="icome">--%>
+<%--                                                        ${icome},--%>
+<%--                                                        </c:forEach>--%>
+<%--                                                    ],--%>
+<%--                                                    fill: false,--%>
+<%--                                                    borderColor: 'rgb(75, 192, 192)',--%>
+<%--                                                    tension: 0.1--%>
+<%--                                                }]--%>
+<%--                                            },--%>
+<%--                                            options: {--%>
+<%--                                                scales: {--%>
+<%--                                                    y: {--%>
+<%--                                                        beginAtZero: true--%>
+<%--                                                    }--%>
+<%--                                                }--%>
+<%--                                            }--%>
+<%--                                        });--%>
+<%--                                    });</script>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
 
                 </div>
             </div><!-- End Left side columns -->

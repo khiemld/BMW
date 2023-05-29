@@ -11,6 +11,14 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+
+
+  <session-config>
+    <tracking-mode>COOKIE</tracking-mode>
+  </session-config>
+
+
+
 <!--  error pages-->
   <error-page>
     <error-code>404</error-code>
@@ -49,6 +57,15 @@
     <url-pattern>/processOrder</url-pattern>
   </filter-mapping>
 
+<!--  Header filter X-Content-Type-Options-->
+  <filter>
+    <filter-name>HeaderFilter</filter-name>
+    <filter-class>com.bookstore.filter.HeaderFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>HeaderFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 <!--  Cart filter-->
   <filter>
     <filter-name>CartFilter</filter-name>

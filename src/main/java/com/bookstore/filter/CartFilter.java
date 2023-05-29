@@ -21,6 +21,8 @@ public class CartFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
+        String uidString = request.getParameter("uid");
+        int uid = Integer.parseInt(uidString);
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         String url = request.getRequestURI();
@@ -29,7 +31,11 @@ public class CartFilter implements Filter {
             User user = (User) session.getAttribute("acc");
             if (user == null) {
                 response.sendRedirect("/login");
-            } else {
+            }
+            else if (user.getId()!= uid) {
+                response.sendRedirect("/errorPage");
+            }
+            else {
                 chain.doFilter(request, response);
             }
         }
