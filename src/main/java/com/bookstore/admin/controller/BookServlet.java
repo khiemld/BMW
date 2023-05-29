@@ -7,6 +7,7 @@ import com.bookstore.entity.Category;
 import com.bookstore.entity.Email;
 import com.bookstore.entity.Product;
 import com.bookstore.utility.EmailUtils;
+import org.owasp.validator.html.*;
 
 import javax.mail.MessagingException;
 import javax.servlet.*;
@@ -115,17 +116,27 @@ public class BookServlet extends HttpServlet {
 
 //        Kiểm tra người dùng có nhập dữ liệu vào hay chưa
         if (!pName.trim().equals("") && !pOriginalPrice.trim().equals("") && !pSalePrice.trim().equals("") && !pQuantity.trim().equals("")) {
-//            Thực hiện kiểm tra dữ liệu vào
+//
+//          Thực hiện kiểm tra dữ liệu vào
+            String validatedPName = pName, validatedPDescription = pDescription;
+            try {
+                validatedPName = validateInput(pName);
+                validatedPDescription = validateInput(pDescription);
+            } catch (ScanException e) {
+                throw new RuntimeException(e);
+            } catch (PolicyException e) {
+                throw new RuntimeException(e);
+            }
 
 //            Tạo một đối tượng Product để lưu dữ liệu
             Product book = new Product();
             if (!pID.equals("")) {
                 book.setId(Integer.parseInt(pID));
             }
-            book.setName(pName);
+            book.setName(validatedPName);
             book.setOriginalPrice(Integer.parseInt(pOriginalPrice));
             book.setSalePrice(Integer.parseInt(pSalePrice));
-            book.setDiscription(pDescription);
+            book.setDiscription(validatedPDescription);
             book.setQuantity(Integer.parseInt(pQuantity));
             book.setIdCategory(Integer.parseInt(pCategoryID));
             book.setImage(pImageLink);
@@ -264,5 +275,16 @@ public class BookServlet extends HttpServlet {
             request.setAttribute("sell", sellBook);
             request.getRequestDispatcher("/admin/book.jsp").forward(request, response);
         }
+    }
+
+    String validateInput(String possibleDirtyInput) throws ScanException, PolicyException {
+        String policyFile = "E:\\HVTG\\Code\\Websec\\src\\main\\webapp\\WEB-INF\\antisamy-slashdot-1.4.4.xml";
+        Policy policy = Policy.getInstance(policyFile);
+
+        AntiSamy antiSamy = new AntiSamy();
+        CleanResults cleanResults = antiSamy.scan(possibleDirtyInput, policy);
+
+        String sanitizedInput = cleanResults.getCleanHTML();
+        return sanitizedInput;
     }
 }

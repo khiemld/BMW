@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+         pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,10 +25,10 @@
 </head>
 <body>
 <!-- header -->
-<%@ include file ="header.jsp" %>
+<%@ include file="header.jsp" %>
 <!-- end header -->
 
-<div class="container" >
+<div class="container">
     <div class="main-body">
         <!-- Breadcrumb -->
         <nav aria-label="breadcrumb" class="main-breadcrumb">
@@ -65,7 +65,9 @@
                             </div>
                             <form action="orderProfile" method="post">
                                 <input type="hidden" name="uid" value="${sessionScope.acc.id}">
-                                <button type="submit" class="btn btn-outline-primary" style="margin-top: 8px">Đơn hàng của tôi</button>
+                                <button type="submit" class="btn btn-outline-primary" style="margin-top: 8px">Đơn hàng
+                                    của tôi
+                                </button>
                             </form>
 
                         </div>
@@ -177,13 +179,14 @@
                         <c:if test="${sessionScope.acc.image == null}">
                             <input name="image" value="${sessionScope.acc.image}" type="image" class="form-control">
                         </c:if>
-                        <input  name="image" type="file" id="fileImage" value="upload" accept="image/*">
+                        <input name="image" type="file" id="fileImage" value="upload" accept="image/*">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
                     <input type="submit" class="btn btn-success" value="Edit">
                 </div>
+                <input type="hidden" name="csrfToken" value="${sessionScope.csrfToken}"/>
             </form>
         </div>
     </div>
