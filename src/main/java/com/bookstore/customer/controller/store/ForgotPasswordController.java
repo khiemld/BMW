@@ -18,6 +18,7 @@ public class ForgotPasswordController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
         request.getRequestDispatcher("/store/views/login.jsp").forward(request, response);
     }
 
@@ -26,7 +27,7 @@ public class ForgotPasswordController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
-
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
         HttpSession session = request.getSession(true);
         System.out.println("Forgot DoPost");
         String url = "";

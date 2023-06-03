@@ -14,6 +14,7 @@ public class RegisterController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
         System.out.println("Loading: RegisterController DoGet");
 
         doPost(request,response);
