@@ -177,7 +177,6 @@ public class ProductDAO {
             Query query = session.createQuery(sqlString);
             query.setParameter("name", "%" + name + "%");
             products = query.list();
-            System.out.println("-------------------" + query.);
         } catch (RuntimeException e) {
             e.printStackTrace();
         } finally {
