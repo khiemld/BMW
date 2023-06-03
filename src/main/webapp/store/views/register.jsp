@@ -5,13 +5,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<%--    <meta name="viewport"--%>
+<%--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">--%>
     <title>Document</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
     <link href="<c:url value = "/store/css/register.css" />" rel="stylesheet" type="text/css">
+    <meta http-equiv="Content-Security-Policy" content="
+    script-src 'self //code.jquery.com/jquery-3.2.1.slim.min.js //cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js //maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'
+    stye-src './store/css/style.css //maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css //maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
+    frame-ancestors 'none'">
 </head>
 <body>
 <div class="card bg-light">

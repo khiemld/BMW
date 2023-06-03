@@ -16,6 +16,7 @@ public class SearchController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
     }
 
     @Override
@@ -23,6 +24,7 @@ public class SearchController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=UTF8");
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
         request.setCharacterEncoding("UTF-8");
 
         String nameSearch = request.getParameter("txt");

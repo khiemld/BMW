@@ -12,6 +12,7 @@ public class LogoutController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=UTF8");
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
         HttpSession session = request.getSession();
         session.removeAttribute("acc");
         /*request.getRequestDispatcher("/store/views/home.jsp").forward(request, response);*/

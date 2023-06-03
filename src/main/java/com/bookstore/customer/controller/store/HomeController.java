@@ -15,7 +15,7 @@ public class HomeController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
-
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
         ProductDAO productDAO = new ProductDAO();
         List<Product> product4Lastest = null;
         product4Lastest = productDAO.get4LastestProduct();

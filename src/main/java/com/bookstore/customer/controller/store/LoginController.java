@@ -16,6 +16,7 @@ public class LoginController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
         response.setContentType("text/html");
         System.out.println("Loading: LoginController DoGet");
         String url = "/store/views/login.jsp";
@@ -59,7 +60,7 @@ public class LoginController extends HttpServlet {
         response.setContentType("text/html");
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
-
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
         System.out.println("Loading: LoginController DoPost");
         String action = request.getParameter("action").trim();
         System.out.println("action = " + action);

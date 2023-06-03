@@ -8,10 +8,12 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="shortcut icon" href="./store/icon/paper-plane.ico">
-
+    <meta http-equiv="Content-Security-Policy" content="
+    script-src 'self //code.jquery.com/jquery-3.2.1.slim.min.js //cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js //maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'
+    stye-src './store/css/style.css //maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css //maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
+    frame-ancestors 'none'">
     <link href="<c:url value = "/store/css/order.css" />" rel="stylesheet" type="text/css">
 </head>
 <body>

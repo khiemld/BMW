@@ -11,6 +11,27 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+
+
+  <session-config>
+    <cookie-config>
+      <http-only>true</http-only>
+      <secure>true</secure>
+    </cookie-config>
+    <tracking-mode>COOKIE</tracking-mode>
+  </session-config>
+
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>book-ecommerce</web-resource-name>
+      <url-pattern>/store/views/*</url-pattern>
+    </web-resource-collection>
+    <user-data-constraint>
+      <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+
+
 <!--  error pages-->
   <error-page>
     <error-code>404</error-code>

@@ -19,6 +19,7 @@ public class ResetController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
         User user = (User) request.getSession().getAttribute("acc");
         System.out.println("acc: " + user.getEmail());
         request.getRequestDispatcher("/store/views/editprofile.jsp").forward(request, response);
@@ -28,7 +29,7 @@ public class ResetController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
-
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
         String error = "";
         String message = "";
         String url = "/store/views/editprofile.jsp";

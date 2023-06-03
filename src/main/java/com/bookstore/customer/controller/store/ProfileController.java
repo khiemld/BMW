@@ -14,6 +14,7 @@ public class ProfileController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
         User user = (User) request.getSession().getAttribute("acc");
         System.out.println("acc: " + user.getEmail());
         request.getRequestDispatcher("/store/views/profile.jsp").forward(request, response);

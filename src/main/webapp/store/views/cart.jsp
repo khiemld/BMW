@@ -10,11 +10,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Free Bootstrap 4 Ecommerce Template</title>
     <link rel="shortcut icon" href="./store/icon/paper-plane.ico">
+    <meta http-equiv="Content-Security-Policy" content="
+    script-src 'self //code.jquery.com/jquery-3.2.1.slim.min.js //cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js //maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'
+    stye-src './store/css/style.css //maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css //maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
+    frame-ancestors 'none'">
     <!-- CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
     <link href="<c:url value = "/store/css/style.css" />" rel="stylesheet" type="text/css">
+<%--    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self'; frame-ancestors 'self'; form-action 'self';">--%>
 </head>
 <body>
 
@@ -72,7 +77,7 @@
                         <tr>
                             <td></td>
                             <td></td>
-                            <td><b>Temporary Cost</td>
+                            <td><b>Temporary Cost</b></td>
                             <td></td>
                             <td></td>
                             <td></td>

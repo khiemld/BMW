@@ -14,6 +14,7 @@ public class DetailProductController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
         String id = request.getParameter("pid");
         ProductDAO productDAO = new ProductDAO();
         Product product = productDAO.getProductByID(Integer.parseInt(id));

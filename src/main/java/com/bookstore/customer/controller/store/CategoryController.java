@@ -18,7 +18,7 @@ public class CategoryController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=UTF8");
-
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
         String cateID = request.getParameter("cid");
 
 
