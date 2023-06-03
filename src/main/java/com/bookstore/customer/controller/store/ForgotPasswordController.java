@@ -45,12 +45,11 @@ public class ForgotPasswordController extends HttpServlet {
                 User user = userDAO.findByEmail(resetEmail);
                 System.out.println("userrest: " + user.getId() + user.getName() + user);
 
-                if(user.getName() == null){
+                if (user.getName() == null) {
                     request.setAttribute("error", "Email không tồn tại. Vui lòng nhập lại");
                     url = "/store/views/login.jsp";
                     request.setAttribute("resetEmail", resetEmail);
-                }
-                else {
+                } else {
                     System.out.println("send email");
                     Email email = new Email();
                     email.setFrom("hau.trantrungg@gmail.com");
@@ -72,16 +71,14 @@ public class ForgotPasswordController extends HttpServlet {
                     session.setAttribute("resetEmail", resetEmail);
                     session.setAttribute("otp", otp);
                 }
-            }
-            catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
                 request.setAttribute("error", e.getMessage());
             }
             System.out.println(url);
             request.getRequestDispatcher(url).forward(request, response);
-        }
-        else { //action = checkOTP, kiểm tra mã OTP, nếu đúng chuyển sang trang edit mật khẩu editProfile
-            String resetEmail = session.getAttribute("resetEmail").toString();
+        } else if (action.equals("checkOTP")) { //action = checkOTP, kiểm tra mã OTP, nếu đúng chuyển sang trang edit mật khẩu editProfile
+            /*String resetEmail = session.getAttribute("resetEmail").toString();*/
             System.out.println("session.getAttribute(\"resetEmail\").toString()");
             url = "/store/views/editprofile.jsp";
             String otp = session.getAttribute("otp").toString().trim();
@@ -91,7 +88,7 @@ public class ForgotPasswordController extends HttpServlet {
 
             String checkSession = "";
             Enumeration enumeration = session.getAttributeNames();
-            while (enumeration.hasMoreElements()){
+            while (enumeration.hasMoreElements()) {
                 String current = (String) enumeration.nextElement();
 
                 checkSession = " - " + current + ": " + session.getAttribute(current) + "\n";
@@ -99,11 +96,10 @@ public class ForgotPasswordController extends HttpServlet {
             System.out.println(checkSession + "isNew: " + session.isNew());
 
             //kiểm tra xem otp mà người dùng nhập có bằng với otp được gửi vào mail không
-            if (!otp.equals(inputOTP)){ //nếu không giống
+            if (!otp.equals(inputOTP)) { //nếu không giống
                 System.out.println("!otp.equals(inputOTP)");
                 url = "/store/views/enterOTP.jsp";
-            }
-            else {
+            } else {
                 System.out.println("otp.equals(inputOTP)");
 //
 //                request.setAttribute("resetEmail", resetEmail);
@@ -112,6 +108,13 @@ public class ForgotPasswordController extends HttpServlet {
             }
 //            response.sendRedirect(request.getContextPath() + url);
             System.out.println(url);
+            request.getRequestDispatcher(url).forward(request, response);
+        } else {
+            url = "/store/views/login.jsp";
+            action = "enterOTP";
+            String resetEmail = request.getParameter("resetEmail");
+            request.setAttribute("action", action);
+            request.setAttribute("resetEmail", resetEmail);
             request.getRequestDispatcher(url).forward(request, response);
         }
     }

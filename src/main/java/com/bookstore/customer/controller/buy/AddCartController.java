@@ -22,27 +22,32 @@ public class AddCartController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html; charset=UTF8");
         request.setCharacterEncoding("UTF-8");
-        int idUser = Integer.parseInt(request.getParameter("uid"));
-        int idP = Integer.parseInt(request.getParameter("pid"));
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-        ProductDAO productDAO = new ProductDAO();
-        CartItemDAO cartItemDAO = new CartItemDAO();
+        int idUser, idP, quantity;
 
-        Product product = productDAO.getProductByID(idP);
-        if(product.getQuantity() < 1){
-            request.setAttribute("err", "Sản phẩm hiện tại hết hàng");
-            request.setAttribute("pid", idP);
-            request.getRequestDispatcher("detail").forward(request, response);
+        try {
+            idUser = Integer.parseInt(request.getParameter("uid"));
+            idP = Integer.parseInt(request.getParameter("pid"));
+            quantity = Integer.parseInt(request.getParameter("quantity"));
+            ProductDAO productDAO = new ProductDAO();
+            CartItemDAO cartItemDAO = new CartItemDAO();
+
+            Product product = productDAO.getProductByID(idP);
+
+            if (product.getQuantity() < 1) {
+                request.setAttribute("err", "Sản phẩm hiện tại hết hàng");
+                request.setAttribute("pid", idP);
+                request.getRequestDispatcher("detail").forward(request, response);
+            } else {
+                int price = productDAO.getSalePrice(idP);
+                CartItem cartItem = new CartItem(idUser, idP, quantity, price);
+                cartItemDAO.addCartItem(cartItem);
+
+                request.setAttribute("uid", idUser);
+                request.getRequestDispatcher("showCart").forward(request, response);
+            }
+        } catch (Throwable t) {
+            response.sendRedirect("http://localhost:8080/home");
         }
-        else{
-            int price = productDAO.getSalePrice(idP);
-            CartItem cartItem = new CartItem(idUser, idP, quantity, price);
-            cartItemDAO.addCartItem(cartItem);
-
-            request.setAttribute("uid", idUser);
-            request.getRequestDispatcher("showCart").forward(request, response);
-        }
-
     }
 }

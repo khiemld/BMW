@@ -17,7 +17,13 @@ public class DetailProductController extends HttpServlet {
         response.setHeader("X-Frame-Options", "SAMEORIGIN");
         String id = request.getParameter("pid");
         ProductDAO productDAO = new ProductDAO();
-        Product product = productDAO.getProductByID(Integer.parseInt(id));
+        int parseInt = 0;
+        try {
+            parseInt = Integer.parseInt(id);
+        } catch (Throwable t) {
+
+        }
+        Product product = productDAO.getProductByID(parseInt);
         request.setAttribute("detail", product);
         request.getRequestDispatcher("/store/views/detailProduct.jsp").forward(request, response);
     }

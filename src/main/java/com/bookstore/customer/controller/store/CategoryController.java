@@ -8,6 +8,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -28,12 +29,17 @@ public class CategoryController extends HttpServlet {
         List<Product> products = productDAO.getAll();
         List<Category> categories = categoryDAO.getAll();
         Product lastProduct = productDAO.getLatestProduct();
-        List<Product> productByCateID = productDAO.getProductByCategoryID(Integer.parseInt(cateID));
-
-        if("0".equals(cateID)){
-            request.setAttribute("listProduct", products);
+        List<Product> productByCateID = new ArrayList<>();
+        try {
+            productByCateID = productDAO.getProductByCategoryID(Integer.parseInt(cateID));
+        } catch (Throwable throwable) {
+            cateID = "0";
+            productByCateID = productDAO.getProductByCategoryID(Integer.parseInt(cateID));
         }
-        else{
+
+        if ("0".equals(cateID)) {
+            request.setAttribute("listProduct", products);
+        } else {
             request.setAttribute("listProduct", productByCateID);
         }
 

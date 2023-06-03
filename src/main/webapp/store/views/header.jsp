@@ -63,7 +63,7 @@
 		</form>
 		<form action="search" method="post" class="form-inline my-2 my-lg-0">
 			<div class="input-group input-group-sm">
-				<input value="${txtSearch}" name="txt" type="text" class="form-control">
+				<input value=<%--"${txtSearch}"--%> "<c:out value="${txtSearch}"></c:out>" name="txt" type="text" class="form-control">
 				<div class="input-group-append">
 					<button type="submit" class="btn btn-secondary btn-number">
 						<i class="fa fa-search"></i>
